@@ -1,9 +1,8 @@
 Kookoo::Application.routes.draw do
-  get "users/new"
 
-  get "users/edit"
+  resources :users
 
-  get "users/show"
+  root :to => "users#new" 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
