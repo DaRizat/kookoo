@@ -42,10 +42,10 @@
           = f.text_area :body, :style => 'height:50px; width:610px'
         .actions
           = f.submit "Post Message", :class => 'btn btn-primary'
-
-    .span8.offset3(style='margin-top:10px')
+							
+    .span8.offset3(style='margin-top:10px; height:420px; width:650px; overflow:auto; display:block')
       = render :partial => 'messages/pane', :locals => { :messages => @messages }
 
   - else
-    .span8(style='margin-top:10px')
+    .span8(style='margin-top:10px; height:420px; width:650px; overflow:auto; display:block')
       = render :partial => 'messages/pane', :locals => { :messages => @messages }

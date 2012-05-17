@@ -8,8 +8,8 @@
   %body
 
     /UNIVERSAL NAVIGATION BAR
-    .navbar.navbar-fixed-top
-      .navbar-inner
+    %header.navbar.navbar-fixed-top
+      %nav.navbar-inner
         .container
 
           = link_to "KooKoo", root_path, class: 'brand'
@@ -35,4 +35,4 @@
           /ALL LOADED CONTENT WILL LOAD HERE
           = yield
 
-      %footer
+          %footer
