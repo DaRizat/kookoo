@@ -2,16 +2,17 @@ Kookoo::Application.routes.draw do
 
   get "messages/create"
 
-  get "welcome/index"
+  get "dashboard/index"
 
   resources :users
   resources :user_sessions
   resources :messages
- 
+  resources :subscriptions 
+
   get "log_out" => "user_sessions#destroy", :as => "log_out"
   get "log_in" => "user_sessions#new", :as => "log_in"
   
-  root :to => "welcome#index" 
+  root :to => "dashboard#index" 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

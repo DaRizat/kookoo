@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def create
-    @message = Message.create({:body => params[:body], :user_id => session[:user_id]})
+    @message = current_user.messages.create(params[:message])
     redirect_to :back, :notice => "Message Successfully Posted!"
   end
 end

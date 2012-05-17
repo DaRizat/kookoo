@@ -22,18 +22,13 @@
           %td(style='font-size:16pt')= @user.subscriptions.count
           %td(style='font-size:16pt')= @user.subscribers.count
 
-  - if me?
-    .span8.well
-      = form_for @message, :html => { :style => 'margin-bottom:0px'}  do |f|
-        .field
-          = f.label "Say Something!"
-          = f.text_area :body, :style => 'height:50px; width:610px'
-        .actions
-          = f.submit "Post Message", :class => 'btn btn-primary'
-
-    .span8.offset3(style='margin-top:10px')
-      = render :partial => 'messages/pane', :locals => { :messages => @messages }
-
-  - else
-    .span8(style='margin-top:10px')
-      = render :partial => 'messages/pane', :locals => { :messages => @messages }
+  .span8.well
+    = form_for @message, :html => { :style => 'margin-bottom:0px'}  do |f|
+      .field
+        = f.label "Say Something!"
+        = f.text_area :body, :style => 'height:50px; width:610px'
+      .actions
+        = f.submit "Post Message", :class => 'btn btn-primary'
+  
+  .span8.offset3(style='margin-top:10px')
+    = render :partial => 'messages/pane', :locals => { :messages => @messages }

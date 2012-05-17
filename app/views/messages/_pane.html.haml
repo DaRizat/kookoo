@@ -1,0 +1,12 @@
+- messages.each do |message|
+  .row
+    .span1
+      %a(href="#" class="thumbnail")
+        %img{"src"=>"http://flickholdr.com/50/50/face/#{current_user.id}", "alt"=>"#{current_user.full_name}"}    
+    .span6
+      %b= link_to message.author.full_name, user_path(message.author)
+      %p(style="font-size:8pt; color:#AAA; line-height:8pt")= "#{distance_of_time_in_words_to_now(message.created_at)} ago"
+      %p(style="font-size:14px; color:#333; line-height:24px")= message.body
+
+      - unless(message == messages.last)
+        %hr
