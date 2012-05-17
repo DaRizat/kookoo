@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
   private
   
   def current_user  
-    User.find(session[:user_id])
+    User.find(session[:user_id]) unless session[:user_id].blank?
   end
 end

@@ -1,4 +1,13 @@
 class UsersController < ApplicationController
+  
+  def search
+    @users = User.where("full_name LIKE ?", "%#{params[:term]}%")
+    Rails.logger.info ("WHERE DID MY SESSION GO! #{session[:user_id]}")
+    respond_to do |format|
+      format.html
+    end
+  end
+
   # GET /users
   # GET /users.json
   def index

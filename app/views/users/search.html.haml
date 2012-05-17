@@ -1,0 +1,36 @@
+.span12
+  - @users.each do |user|
+    .row.well
+      .span1
+        %a(href="#" class="thumbnail")
+          %img{"src"=>"http://flickholdr.com/50/50/face/#{user.id}", "alt"=>"#{user.full_name}"}    
+      .span10
+        .span4
+          %h2= link_to user.full_name, user_path(user)
+        .span3
+          %div(style="margin-top: 10px;")
+            %table
+              %tr(style='text-align:center')
+                %th(style='font-size:8pt; padding-left:10px; padding-right:10px;') Messages
+                %th(style='font-size:8pt; padding-left:10px; padding-right:10px;') Subscriptions
+                %th(style='font-size:8pt; padding-left:10px; padding-right:10px;') Subscribers
+              %tr(style='text-align:center')
+                %td(style='font-size:16pt')= user.messages.count
+                %td(style='font-size:16pt')= user.subscriptions.count
+                %td(style='font-size:16pt')= user.subscribers.count
+        .span2
+          -if current_user
+            -unless user_is_me? user.id
+              - @subscription = get_user_subscription user.id
+              -if(@subscription.new_record?)
+                = form_for @subscription, :html => { :style => "margin-left:140px; margin-top:15px" } do |f| 
+                  = f.text_field :subscriber_id, :type => 'hidden', :value => current_user.id
+                  = f.text_field :subscribee_id, :type => 'hidden', :value => user.id
+                  = f.submit :value => "Subscribe", :class => "btn btn-primary"
+              - else
+                = form_for @subscription, :html => { :style => "margin-left:140px; margin-top:15px" }, :method => :delete do |f| 
+                  = f.text_field :subscriber_id, :type => 'hidden', :value => current_user.id
+                  = f.text_field :subscribee_id, :type => 'hidden', :value => user.id
+                  = f.submit :value => "Unsubscribe", :class => "btn btn-primary"
+          -else
+            = link_to "Subscribe", new_user_path, :class => 'btn btn-primary pull-right', :style => 'margin-left:240px; margin-top:15px'  

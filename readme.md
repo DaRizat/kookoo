@@ -68,7 +68,7 @@ https://gist.github.com/80bae5d52b102d20a018
 Now that we can subscribe to users, we want an easy way to find users in the system. In this lesson, we will build a simple user name search into the header.
 
 * Code for the lesson can be found here:
-
+https://gist.github.com/154f940801583453a91c
 
 ## Lesson 10: View Cleanup and Polish
 
