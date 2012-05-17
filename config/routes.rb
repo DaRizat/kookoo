@@ -1,12 +1,14 @@
 Kookoo::Application.routes.draw do
 
+  get "welcome/index"
+
   resources :users
   resources :user_sessions
   
   get "log_out" => "user_sessions#destroy", :as => "log_out"
   get "log_in" => "user_sessions#new", :as => "log_in"
   
-  root :to => "users#new" 
+  root :to => "welcome#index" 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
