@@ -4,6 +4,7 @@ class WelcomeController < ApplicationController
 
   def index
     @user = User.find(session[:user_id])
+    @message = Message.new
   end
 
   def check_for_login
