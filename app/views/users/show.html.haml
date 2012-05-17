@@ -11,6 +11,18 @@
       - else
         %b= @user.full_name
 
+    -unless me?
+      -if(@subscription.new_record?)
+        = form_for @subscription do |f| 
+          = f.text_field :subscriber_id, :type => 'hidden', :value => current_user.id
+          = f.text_field :subscribee_id, :type => 'hidden', :value => @user.id
+          = f.submit :value => "Subscribe", :class => "btn btn-primary"
+      - else
+        = form_for @subscription, :method => :delete do |f| 
+          = f.text_field :subscriber_id, :type => 'hidden', :value => current_user.id
+          = f.text_field :subscribee_id, :type => 'hidden', :value => @user.id
+          = f.submit :value => "Unsubscribe", :class => "btn btn-primary"
+
     %div(style="margin-top: 10px;")
       %table
         %tr(style='text-align:center')

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @messages = @user.messages
     @message = Message.new
-    @subscription = Subscription.new
+    @subscription = Subscription.where("subscriber_id=#{current_user.id} AND subscribee_id=#{@user.id}").first_or_initialize
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }
